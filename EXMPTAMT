@@ -1,0 +1,48 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EXMPTAMT.
+
+       ENVIRONMENT DIVISION.
+
+       DATA DIVISION.
+       LINKAGE SECTION.
+
+       01  MARITAL-IN            PIC X.
+       01  EXEMPT-NUM-IN         PIC 99.
+       01  EXEMPT-AMT-WS         PIC 9(7)V99.
+
+       PROCEDURE DIVISION USING MARITAL-IN EXEMPT-NUM-IN EXEMPT-AMT-WS.
+
+       100-MAINLINE.
+           IF MARITAL-IN = 'S'  AND  EXEMPT-NUM-IN = 1
+           THEN COMPUTE EXEMPT-AMT-WS =  EXEMPT-NUM-IN * 500.00
+           END-IF
+
+           IF MARITAL-IN = 'M'  AND EXEMPT-NUM-IN = 2
+           THEN  COMPUTE EXEMPT-AMT-WS =  EXEMPT-NUM-IN * 400.00
+           END-IF
+
+           IF (EXEMPT-NUM-IN >= 2 AND <= 4) AND MARITAL-IN = 'S'
+           THEN COMPUTE EXEMPT-AMT-WS =  EXEMPT-NUM-IN * 1000.00
+           END-IF
+
+           IF (EXEMPT-NUM-IN >= 3 AND <= 5) AND  MARITAL-IN = 'M'
+           THEN COMPUTE EXEMPT-AMT-WS =  EXEMPT-NUM-IN * 800.00
+           END-IF
+
+           IF (EXEMPT-NUM-IN >= 5 AND <= 7) AND MARITAL-IN = 'S'
+           THEN COMPUTE EXEMPT-AMT-WS =  EXEMPT-NUM-IN * 1500.00
+           END-IF
+
+           IF (EXEMPT-NUM-IN >= 6 AND <= 8) AND  MARITAL-IN = 'M'
+           THEN COMPUTE EXEMPT-AMT-WS =  EXEMPT-NUM-IN * 1200.00
+           END-IF
+
+           IF MARITAL-IN = 'S'  AND  EXEMPT-NUM-IN >= 8
+           THEN MOVE 0 TO EXEMPT-AMT-WS
+           END-IF
+
+           IF MARITAL-IN = 'M'  AND EXEMPT-NUM-IN >= 9
+           THEN MOVE 0 TO EXEMPT-AMT-WS
+           END-IF.
+
+       END PROGRAM EXMPTAMT.

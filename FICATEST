@@ -1,0 +1,26 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. FICATEST.
+
+       ENVIRONMENT DIVISION.
+
+       DATA DIVISION.
+       LINKAGE SECTION.
+       01  FICA-RATE             PIC 9V9999.
+       01  FICA-MAX              PIC 999999.
+       01  FICA-CAL-WS           PIC 9(6)V99.
+       01  GROSS-WS              PIC 9(7)V99.
+
+       PROCEDURE DIVISION USING FICA-RATE FICA-MAX FICA-CAL-WS
+               GROSS-WS.
+
+       100-MAINLINE.
+
+           IF GROSS-WS > FICA-MAX
+              MOVE FICA-MAX TO GROSS-WS
+           END-IF
+
+           COMPUTE FICA-CAL-WS = GROSS-WS * FICA-RATE.
+
+           EXIT.
+
+       END PROGRAM FICATEST.

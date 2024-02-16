@@ -1,0 +1,37 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. DATECC2.
+
+       ENVIRONMENT DIVISION.
+
+       DATA DIVISION.
+       LINKAGE SECTION.
+       01  HOLD-DATE-WS.
+           05 YEAR-WS            PIC 9999.
+           05 MONTH-WS           PIC 99.
+           05 DAY-WS             PIC 99.
+           05 HOURS-WS           PIC 99.
+           05 MINUTES-WS         PIC 99.
+           05 SECONDS-WS         PIC 99.
+
+       01 YEAR-OUT            PIC 9999.
+       01 MONTH-OUT           PIC 99.
+       01 DAY-OUT             PIC 99.
+       01 HOURS-OUT           PIC 99.
+       01 MINUTES-OUT         PIC 99.
+       01 SECONDS-OUT         PIC 99.
+
+       PROCEDURE DIVISION USING HOLD-DATE-WS YEAR-OUT MONTH-OUT
+           DAY-OUT HOURS-OUT MINUTES-OUT SECONDS-OUT.
+
+       100-MAINLINE.
+           MOVE FUNCTION CURRENT-DATE TO HOLD-DATE-WS
+           MOVE YEAR-WS TO YEAR-OUT
+           MOVE MONTH-WS TO MONTH-OUT
+           MOVE DAY-WS TO DAY-OUT
+           MOVE HOURS-WS TO HOURS-OUT
+           MOVE MINUTES-WS TO MINUTES-OUT
+           MOVE SECONDS-WS TO SECONDS-OUT
+
+           EXIT.
+
+       END PROGRAM DATECC2.
